@@ -2,7 +2,7 @@
 # from django.db.models import Q
 # from faker import Faker
 
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 
 from .models import Post
 from .forms import PostForm
@@ -65,7 +65,7 @@ def index_tab(request):
 
 
 def post_view(request, id=1):
-    post = Post.objects.get(id=id)
+    post = get_object_or_404(Post, id=id)
     return render(request, 'blog/post_view.html', {'title': 'Обраний пост', 'post': post})
 
 
@@ -74,7 +74,7 @@ def post_edit(request, id=0):
         if id == 0:
             form = PostForm()
         else:
-            post = Post.objects.get(id=id)
+            post = get_object_or_404(Post, id=id)
             form = PostForm(instance=post)
 
         return render(request, 'blog/post_edit.html', {'form': form})
@@ -82,7 +82,7 @@ def post_edit(request, id=0):
         if id == 0:
             form = PostForm(request.POST)
         else:
-            post = Post.objects.get(id=id)
+            post = get_object_or_404(Post, id=id)
             form = PostForm(request.POST, instance=post)
         if form.is_valid():
             form.save()
@@ -91,7 +91,7 @@ def post_edit(request, id=0):
 
 
 def post_delete(request, id=0):
-    post = Post.objects.get(id=id)
+    post = get_object_or_404(Post, id=id)
     post.delete()
 
     posts = Post.objects.all()
