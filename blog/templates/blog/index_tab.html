@@ -1,0 +1,57 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}
+Table
+{% endblock %}
+
+{% block content %}
+
+<h2>Усі пости нашого проекту "Блог UA".</h2>
+
+<table class="table">
+
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Назва</th>
+            <th scope="col">Автор</th>
+            <th scope="col">Опис</th>
+        </tr>
+    </thead>
+
+    <tbody>
+    {% if posts %}
+    {% for elem in posts %}
+        <tr>
+            <th scope="row">{{elem.id}}</th>
+            <td>{{elem.title}}</td>
+            <td>{{elem.author}}</td>
+            <td>{{elem.text|truncatewords:7}}</td>
+
+            <td>
+                <a type="button" class="btn btn-info btn-sm" href="/post/{{elem.id}}/view">
+                    <img src="https://cdn-icons-png.flaticon.com/512/64/64673.png" width="24" height="24">
+                </a>
+            </td>
+
+            <td>
+                <a type="button" class="btn btn-warning btn-sm" href="/post/{{elem.id}}/edit">
+                    <img src="https://cdn-icons-png.flaticon.com/512/32/32355.png" width="24" height="24">
+                </a>
+            </td>
+
+            <td>
+                <a type="button" class="btn btn-danger btn-sm" href="/post/{{elem.id}}/delete">
+                    <img src="https://cdn-icons-png.flaticon.com/512/1345/1345874.png" width="24" height="24">
+                </a>
+            </td>
+        </tr>
+    {% endfor %}
+
+    {% else %}
+        <p>Наразі обрані пости відсутні в каталозі...</p>
+    {% endif %}
+    </tbody>
+
+</table>
+{% endblock %}

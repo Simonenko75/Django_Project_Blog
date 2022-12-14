@@ -1,0 +1,24 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}
+Створити пост
+{% endblock %}
+
+{% block content %}
+
+<h1>Створити новий пост.</h1>
+
+<form method="post">
+    {% csrf_token %}
+    <label for="title"><b>Назва поста</b></label>
+    {{ form.title }}
+    <label for="author"><b>Автор поста</b></label>
+    {{ form.author }}
+    <label for="text"><b>Короткий опис поста</b></label>
+    {{ form.text }}
+    <label for="published"><b>Рік публікації поста</b></label>
+    {{ form.published }}
+    <button type="submit" class="btn btn-primary">Створити</button>
+</form>
+
+{% endblock %}

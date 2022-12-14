@@ -1,0 +1,23 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}
+Пост
+{% endblock %}
+
+{% block content %}
+
+<h1>Обраний пост...</h1>
+
+{% if post %}
+    <div class="alert alert-primary mt-1">
+        <h3><u>{{ post.title }}</u></h3>
+        <p><b><i>{{ post.author }}</i></b></p>
+        <p><i>{{ post.text }}</i></p>
+        <p><b>Рік публікації: {{ post.published }}</b></p>
+        <p><b>Створено: {{ post.created }}</b></p>
+    </div>
+{% else %}
+    <p>В даному каталозі обраний запис відсутні.</p>
+{% endif %}
+
+{% endblock %}

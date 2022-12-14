@@ -1,0 +1,25 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}
+Posts
+{% endblock %}
+
+{% block content %}
+
+<h1>Головна сторінка проекту "Блог UA".</h1>
+
+{% if posts %}
+{% for elem in posts %}
+    <div class="alert alert-primary mt-1">
+        <h3><u>{{ elem.title }}</u></h3>
+        <p><b><i>{{ elem.author }}</i></b></p>
+        <p><i>{{ elem.text }}</i></p>
+        <p><b>Опубліковано: {{ elem.published }}</b></p>
+        <p><b>Зареєстровано: {{ elem.created }}</b></p>
+    </div>
+{% endfor %}
+{% else %}
+    <p>В даному каталозі записи відсутні.</p>
+{% endif %}
+
+{% endblock %}
