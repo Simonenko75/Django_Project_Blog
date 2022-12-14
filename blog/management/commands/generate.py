@@ -28,8 +28,8 @@ class Command(BaseCommand):
                     text=txt,
                     published=pub
                 )
-                print(f'Додалася новий пост під назвою {ttl}')
+                print(f'{i+1} пост було успішно додано!!!Додалася новий пост під назвою {ttl}')
             except:
                 raise CommandError('Error of creating')
             else:
-                print(f'{i+1} пост було успішно додано!!!')
+                print(f'Додалася новий пост під назвою {ttl}')
