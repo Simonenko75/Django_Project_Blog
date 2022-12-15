@@ -36,7 +36,7 @@ def start(request):
 
 
 def index(request):
-    posts = Post.objects.all()
+    posts = Post.objects.order_by('-id')
     return render(request, 'blog/index.html', {'title': 'Головна сторінка', 'posts': posts})
 
 
