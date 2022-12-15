@@ -1,34 +1,7 @@
-# from django.http import HttpResponse
-# from django.db.models import Q
-# from faker import Faker
-
 from django.shortcuts import render, redirect, get_object_or_404
 
 from .models import Post
 from .forms import PostForm
-
-
-# def new_post(request):
-#     n = request.GET.get('numbers')
-#     fake = Faker()
-#
-#     for i in range(int(n)):
-#         a = fake.name()
-#         ttl = fake.sentences(1)[0]
-#         txt = ' '.join(fake.sentences(3))
-#         pub = fake.year()
-#
-#         obj = Post.objects.create(
-#             title=ttl,
-#             author=a,
-#             text=txt,
-#             published=pub
-#         )
-#         obj.save()
-#
-#     posts = Post.objects.order_by('-id')
-#
-#     return render(request, 'blog/index.html', {'title': 'Головна сторінка', 'posts': posts})
 
 
 def start(request):
@@ -44,7 +17,7 @@ def about(request):
     return render(request, 'blog/about.html')
 
 
-def create(request):
+def create_post(request):
     if request.method == 'POST':
         form = PostForm(request.POST)
         if form.is_valid():
@@ -56,7 +29,7 @@ def create(request):
         'form': form
     }
 
-    return render(request, 'blog/create.html', context)
+    return render(request, 'blog/create_post.html', context)
 
 
 def index_tab(request):
