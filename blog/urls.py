@@ -9,7 +9,7 @@ urlpatterns = [
     path('posts/', views.index, name='home'),
     path('about/', views.about, name='about'),
     path('create/', views.create_post, name='create_post'),
-    path('post/<int:id>/view/', views.post_view, name='post_view'),
-    path('post/<int:id>/edit/', views.post_edit, name='post_edit'),
-    path('post/<int:id>/delete/', views.post_delete, name='post_delete'),
+    path('post/view/<int:id>/', views.post_view, name='post_view'),
+    path('post/edit/<int:id>/', views.post_edit, name='post_edit'),
+    path('post/delete/<int:id>/', views.post_delete, name='post_delete'),
 ]

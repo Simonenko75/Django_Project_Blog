@@ -19,7 +19,7 @@ class Command(BaseCommand):
             try:
                 a = fake.name()
                 ttl = fake.sentences(1)[0]
-                txt = ' '.join(fake.sentences(3))
+                txt = ' '.join(fake.sentences(7))
                 pub = fake.year()
 
                 Post.objects.create(

@@ -66,7 +66,4 @@ def post_edit(request, id=0):
 def post_delete(request, id=0):
     post = get_object_or_404(Post, id=id)
     post.delete()
-
-    posts = Post.objects.all()
-
-    return render(request, 'blog/index_tab.html', {'title': 'Перелік постів', 'posts': posts})
+    return redirect('blog')
